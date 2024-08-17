@@ -1,0 +1,28 @@
+# Part 1: Makefile with if-else conditions
+
+# Define the compiler
+CC = gcc
+
+# Define the source files and target
+SRC = main.c utils.c
+TARGET = myprogram
+
+# Check if DEBUG flag is set
+# Use different compiler flags depending on the DEBUG variable
+ifeq ($(DEBUG), 1)
+    CFLAGS = -g -Wall -DDEBUG
+else
+    CFLAGS = -O2 -Wall
+endif
+
+# Default rule to build the program
+all: $(TARGET)
+
+# Rule to compile the target
+$(TARGET): $(SRC)
+	$(CC) $(CFLAGS) -o $@ $^
+
+# Clean rule to remove the executable
+clean:
+	rm -f $(TARGET)
+
