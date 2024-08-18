@@ -1,8 +1,4 @@
-#include <stdio.h>
-
-int bye() {
-    // Print "Hello, World!" to the console
-    printf("Hello, World!\n");
-    return 0;
+float AreaOfRectangle(float a, float b){
+	return a*b;
 }
 

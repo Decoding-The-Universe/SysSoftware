@@ -1,8 +1,4 @@
-#include <stdio.h>
-
-int hi() {
-    // Print "Hello, World!" to the console
-    printf("Hello, World!\n");
-    return 0;
+float AreaOfCylinder(float r, float h){
+  return 2*3.142*r*(h+r);
 }
 

@@ -1,8 +1,4 @@
-#include <stdio.h>
-
-int main() {
-    // Print "Hello, World!" to the console
-    printf("Hello, World!\n");
-    return 0;
+float AreaOfCircle(float r){
+	return 3.142*r*r;
 }
 

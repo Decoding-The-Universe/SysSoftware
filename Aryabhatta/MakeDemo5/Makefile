@@ -1,21 +1,16 @@
-# Define the compiler and flags
-CC = gcc
-CFLAGS = -Wall -g
+CC = gcc 
+CFLAGS = -I./include -Wall
+SRCS = main.c linkedlist.c listprimes.c
+OBJS = $(SRCS:.c=.o)
+EXEC = program 
 
-# Macro for the header file path
-INCLUDE = -I./include
+all : $(EXEC)
 
-# Define the executable name
-EXEC = listprimes
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Default rule: build the executable
-all: $(EXEC)
+$(EXEC): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS) -lm
 
-# Rule to compile listprimes.c into an executable
-$(EXEC): listprimes.c
-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ $<
-
-# Clean rule to remove the executable
-clean:
-	rm -f $(EXEC)
-
+clean : 
+	rm -f $(OBJS) $(EXEC)

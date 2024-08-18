@@ -1,21 +1,25 @@
-# Define the compiler and flags
+# Macro for header file paths
+INCLUDE_DIRS = -I/home/dhanush-sai/Desktop/Aryabhatta/MakeDemo4/bar/include -I/home/dhanush-sai/Desktop/Aryabhatta/MakeDemo4/foo/include
+
+# Macro for library paths
+LIB_DIRS = -L/home/dhanush-sai/Desktop/Aryabhatta/MakeDemo4/foo/lib -L/home/dhanush-sai/Desktop/Aryabhatta/MakeDemo4/bar/lib
+
+# Compiler and flags
 CC = gcc
-CFLAGS = -Wall -g
+CFLAGS = $(INCLUDE_DIRS)
+LDFLAGS = $(LIB_DIRS)
 
-# Macro for library and header file paths
-LIBS = -I/home/baswadhanushsai/Desktop/Acad/Aryabhatta/dependinces -L/home/baswadhanushsai/Desktop/Acad/Aryabhatta/dependinces -lfoo -lbar
+# Libraries to link against
+LIBRARIES = -lfoo -lbar
 
-# Define the executable name
-EXEC = libdriver
+# Source files and target executable
+SRCS = driver.c
+TARGET = libdriver
 
-# Default rule: build the executable
-all: $(EXEC)
+# Default rule to build the executable
+$(TARGET): $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) -o $(TARGET) $(LDFLAGS) $(LIBRARIES)
 
-# Rule to compile driver.c and link with the specified libraries
-$(EXEC): driver.c
-	$(CC) $(CFLAGS) -o $@ $< $(LIBS)
-
-# Clean rule to remove the executable
+# Clean rule to delete the executable
 clean:
-	rm -f $(EXEC)
-
+	rm -f $(TARGET) a.out

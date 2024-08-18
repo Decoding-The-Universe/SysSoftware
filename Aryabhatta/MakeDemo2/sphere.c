@@ -1,8 +1,3 @@
-#include <stdio.h>
-
-int why() {
-    // Print "Hello, World!" to the console
-    printf("Hello, World!\n");
-    return 0;
+float AreaOfSphere(float r){
+	return 4*3.142*r*r;
 }
-
