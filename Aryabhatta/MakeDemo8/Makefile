@@ -1,13 +1,20 @@
-#install gl if it is not installed in your system by $sudo apt-get install libglu1-mesa-dev freeglut3-dev mesa-common-dev
-# many other GL examples are at https://cs.lmu.edu/~ray/notes/openglexamples/
-#
-#CC =gcc CCFLAG=-fno-threadsafe-statics LDFLAG= -lGL -lglut -lGLU -lm SRC=intertrbobarm
+# Define the compiler and the include path
+CXX = g++
+CXXFLAGS = -I/usr/include/GL
 
-all:
+# Name of the executable
+TARGET = intertrbobarm
 
-	gcc  -fno-threadsafe-statics -o intertrbobarm intertrbobarm.cpp -lGL -lglut -lGLU -lm
+# Source file
+SRC = intertrbobarm.cpp
+
+# Rule to build the executable
+all: $(TARGET)
+
+$(TARGET): $(SRC)
+	$(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC) -lGL -lGLU -lglut
+
+# Clean rule to remove the executable
 clean:
-	rm -rf *.o *.exe
-
-.PHONY: all clean
+	rm -f $(TARGET)
 

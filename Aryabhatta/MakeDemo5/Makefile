@@ -1,16 +1,20 @@
-CC = gcc 
-CFLAGS = -I./include -Wall
-SRCS = main.c linkedlist.c listprimes.c
-OBJS = $(SRCS:.c=.o)
-EXEC = program 
+# Define macros
+INCLUDE_DIR = /home/dhanush-sai/Desktop/Aryabhatta/MakeDemo5/includes
+CFLAGS = -I$(INCLUDE_DIR)
+LDFLAGS = -lm
 
-all : $(EXEC)
+# Target executable
+TARGET = listprimes
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+# Source files
+SRC = main.c listprimes.c linkedlist.c
 
-$(EXEC): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS) -lm
+# Rule to build the executable
+$(TARGET): $(SRC)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(LDFLAGS)
 
-clean : 
-	rm -f $(OBJS) $(EXEC)
+# Clean rule to delete the executable
+.PHONY: clean
+clean:
+	rm -f $(TARGET)
+

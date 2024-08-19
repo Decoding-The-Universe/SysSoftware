@@ -17,4 +17,3 @@ printk(KERN_INFO "Goodbye Mr.\n");
 module_init(hello_start);
 module_exit(hello_end);
 MODULE_LICENSE("GPL");
-
